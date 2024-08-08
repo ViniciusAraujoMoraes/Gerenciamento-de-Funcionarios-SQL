@@ -1,0 +1,20 @@
+CREATE TABLE Funcionarios (
+    FuncionarioID INT PRIMARY KEY,
+    Nome VARCHAR(100),
+    Cargo VARCHAR(50),
+    Salario DECIMAL(10, 2),
+    DataAdmissao DATE
+);
+
+CREATE OR REPLACE PROCEDURE PromoverFuncionario(
+    p_FuncionarioID INT,
+    p_NovoCargo VARCHAR,
+    p_NovoSalario DECIMAL
+) IS
+BEGIN
+    UPDATE Funcionarios
+    SET Cargo = p_NovoCargo,
+        Salario = p_NovoSalario
+    WHERE FuncionarioID = p_FuncionarioID;
+END;
+/
